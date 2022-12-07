@@ -116,7 +116,7 @@ class Grid:
                 self.model[row][col] = 0
 
         return False
-
+#solver function
     def solve_gui(self):
         self.update_model()
         find = find_empty(self.model)
@@ -231,7 +231,7 @@ def valid(bo, num, pos):
 
     return True
 
-
+#color and font formatting
 def redraw_window(win, board, time, strikes):
     win.fill((138,194,91))
     # Draw time
@@ -253,9 +253,9 @@ def format_time(secs):
     mat = " " + str(minute) + ":" + str(sec)
     return mat
 
-
+#main window formatting
 def main():
-    win = pygame.display.set_mode((570,600))
+    win = pygame.display.set_mode((540,600))
     pygame.display.set_caption("Sudoku")
     board = Grid(9, 9, 540, 540, win)
     key = None
@@ -263,7 +263,7 @@ def main():
     start = time.time()
     strikes = 0
     while run:
-
+         #key commands for running the game
         play_time = round(time.time() - start)
 
         for event in pygame.event.get():
@@ -309,7 +309,7 @@ def main():
                 if event.key == pygame.K_DELETE:
                     board.clear()
                     key = None
-
+                   #Run solver
                 if event.key == pygame.K_SPACE:
                     board.solve_gui()
 
